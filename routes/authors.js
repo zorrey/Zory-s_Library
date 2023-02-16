@@ -16,6 +16,8 @@ router.get('/', async (req, res)=>{
     /*    const authorsArr = Object.values(allAuthors).reduce((acc,el)=>{
         acc.push(' ' + el.name + ' \n')
         return acc 
+
+        
        },[]) */
        //console.log("allAuthors", typeof authorsArr, authorsArr)
         res.render("authors/index", {
