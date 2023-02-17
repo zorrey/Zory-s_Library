@@ -17,7 +17,7 @@ router.get('/', async (req, res)=>{
         acc.push(' ' + el.name + ' \n')
         return acc 
 
-        
+
        },[]) */
        //console.log("allAuthors", typeof authorsArr, authorsArr)
         res.render("authors/index", {
@@ -25,6 +25,7 @@ router.get('/', async (req, res)=>{
             searchNames: req.query
         })
     }catch{
+        
         res.redirect('/')
     }
 
