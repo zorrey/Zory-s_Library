@@ -1,5 +1,4 @@
 const express = require('express')
-const author = require('../models/author')
 const router = express.Router()
 const Author = require('../models/author')
 //all authors
@@ -25,7 +24,7 @@ router.get('/', async (req, res)=>{
             searchNames: req.query
         })
     }catch{         
-               
+
         res.redirect('/')
     }
 
