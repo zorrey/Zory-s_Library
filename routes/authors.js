@@ -4,7 +4,7 @@ const Author = require('../models/author')
 //all authors
 router.get('/', async (req, res)=>{
     let searchNames = {}
-    console.log(req.query.name, req.params )
+    //console.log(req.query.name, req.params )
     if(req.query.name != null && req.query.name !== ""){
         searchNames.name = new RegExp(req.query.name, 'i')
     }
@@ -15,8 +15,6 @@ router.get('/', async (req, res)=>{
     /*    const authorsArr = Object.values(allAuthors).reduce((acc,el)=>{
         acc.push(' ' + el.name + ' \n')
         return acc 
-
-
        },[]) */
        //console.log("allAuthors", typeof authorsArr, authorsArr)
         res.render("authors/index", {
@@ -31,7 +29,7 @@ router.get('/', async (req, res)=>{
 })
 
 //new authors
-router.get('/new', (req , res)=> {
+router.get('/new', async (req , res)=> {
     res.render("authors/new", {author: new Author()})
 })
 //create author
@@ -53,8 +51,12 @@ router.post('/', async (req, res)=>{
         console.log("author2", author)
     }
 
-router.delete('/',  (req, res)=>{
+router.delete('/new/:authorId',  (req, res)=>{
+    res.send('delete')
+    const authorId = req.params.authorId
+    //const authors = await Author.find({})
     console.log("delete router, req->", req.params)
+    res.render('/authors/delete', {authors: authors, authorId: authorId}) 
 /*     try{
       const deleted = await Author.deleteMany({})
 

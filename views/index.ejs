@@ -1,8 +1,13 @@
-<div> 
-    
+<div>     
 <p class="quote">“To learn to read is to light a fire; every syllable that is spelled out is a spark.” - Victor Hugo</p>    
 <p class="quote">“Show me a family of readers, and I will show you the people who move the world.” - Napoléon Bonaparte</p> 
 <p class="quote">“Employ your time in improving yourself by other men’s writings so that you shall come easily by what others have labored hard for.” - Socrates</p> 
 <p class="quote">“There is no Frigate like a Book To take us Lands away” - Emily Dickinson</p>
+</div>
+<h2>Recently Added</h2>
+<div>
+    <% books.forEach( book => { %>
+        <img height="150" width="100" src="<%= book.coverPath %>" alt="book cover">
 
+    <% }) %>    
 </div>
