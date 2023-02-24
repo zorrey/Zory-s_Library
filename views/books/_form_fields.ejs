@@ -5,7 +5,7 @@
 <div>
     <label for="authorNewbook"> Author </label>
     <select name="author" id="authorNewbook" >
-        <% locals.authors.forEach(author => { %>
+        <% authors.forEach(author => { %>
             <% if( author.id == book.author ) { %>
             <option selected label="<%= author.name  %>" value="<%= author.id %>"></option>
             <% } else { %>
@@ -29,8 +29,11 @@
 </div>
 
 <div>
-    <label for="coverName"> Cover Page </label>
-    <input type="file" name="coverName" > 
+    <label for="cover"> Cover Page </label> <br>
+    <% if(book.coverImage != null && book.coverImage != undefined ) { %>
+        <img height="150" width="100" src="<%= book.coverPath %>" alt="book cover">
+        <% } %>
+    <input type="file" name="cover"  class="filepond"> 
 </div>
 
 

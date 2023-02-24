@@ -17,10 +17,16 @@
     <button type="submit"> Search </button>
 </form>
 <br>
-<%  books.forEach( book => { %>
+<%  books.forEach( async book => { %>
    <div>
-    <img height="150" width="100" src="<%= book.coverPath %>" alt="">
-    <%= book.title %>
+    <a href="/books/<%= book.id %>">
+        <img height="150" width="100" src="<%= book.coverPath %>" alt="">
+    </a>
+   
+    <p>title: <%= book.title %>  </br> 
+    auhtor: <%= book.author.name %></p>
+    <a href="/books/<%= book.id %>"> View </a>
+    <a href="/books/<%= book.id %>/edit"> Edit </a>
+    <%- include('../blocks/deleteForm.ejs', { url: `/books/${book.id}` }) %>
     </div> 
 <%  }); %>
-
