@@ -1,0 +1,72 @@
+:root{
+    --form-label-font-size: 1.5rem;
+    --form-input-border-color: hsl(var(--color-base-hue), 100%, 50%) ;
+    --form-input-border-color-light: hsl(var(--color-base-hue), 100%, 90%) ;
+    --form-input-background: hsl(var(--color-base-hue), 70%, 30%);
+    --color-fprm-text-light: beige;
+}
+.form-row{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5rem;
+}
+.form-item{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.no-grow{
+    flex-grow: 0; 
+}
+.form-row-end {
+    justify-content: flex-end;
+}
+
+
+.form-item:first-child{
+    margin-left: 0;
+}
+.form-item > label{
+    font-size: var(--form-label-font-size);
+    margin-bottom: .25rem;
+    margin-left: .25rem;
+}
+.form-item input, .form-item select, .form-item textarea{
+    height: 2rem;
+    padding: .25rem .5rem;
+    border-radius: .25rem;
+    border: 1px solid var(--form-input-border-color);
+    background-color: var(--form-input-background);
+    color:var(--color-text-light);
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: cursive, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    outline: 0;
+}
+.form-item input:focus, .form-item select:focus, .form-item textarea:focus{
+    border-color: var(--form-input-border-color-light);
+}
+.form-item textarea{
+    height: 100%;
+    resize: none;
+}
+.form-item select option{
+    background-color:rgb(60, 45, 87);
+}
+.filepond--root {
+    font-family: cursive, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 0;
+
+
+}
+.filepond--panel-root{
+    background-color: var(--form-input-background);
+    border: 1px solid var(--form-input-border-color);
+
+}
+.filepond--drop-label{
+    color: var(--color-text-light);
+    font-size: inherit;
+}

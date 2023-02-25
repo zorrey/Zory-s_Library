@@ -1,13 +1,13 @@
 <div>     
-<p class="quote">“To learn to read is to light a fire; every syllable that is spelled out is a spark.” - Victor Hugo</p>    
-<p class="quote">“Show me a family of readers, and I will show you the people who move the world.” - Napoléon Bonaparte</p> 
-<p class="quote">“Employ your time in improving yourself by other men’s writings so that you shall come easily by what others have labored hard for.” - Socrates</p> 
-<p class="quote">“There is no Frigate like a Book To take us Lands away” - Emily Dickinson</p>
+<p class="quote 1">“To learn to read is to light a fire; every syllable that is spelled out is a spark.” - Victor Hugo</p>    
+<p class="quote 2">“Show me a family of readers, and I will show you the people who move the world.” - Napoléon Bonaparte</p> 
+<p class="quote 3">“Employ your time in improving yourself by other men’s writings so that you shall come easily by what others have labored hard for.” - Socrates</p> 
+<p class="quote 4">“There is no Frigate like a Book To take us Lands away” - Emily Dickinson</p>
 </div>
-<h2>Recently Added</h2>
-<div class="container">
+<h2 class="page-header" >Recently Added</h2>
+<div>
     <% books.forEach( book => { %>
-        <a  href="/books/<%= book.id %>">
+        <a  class="btn btn-primary"  href="/books/<%= book.id %>">
         <label for="bookImg"> <%= book.title %>  </label> 
         <img id="bookImg" height="150" width="100" src="<%= book.coverPath %>" alt="book cover">        
         </a> 

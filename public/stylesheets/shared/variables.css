@@ -1,0 +1,10 @@
+:root{
+    --color-base-hue:270;
+    --color-back-dark: hsl(var(--color-base-hue), 79%, 9%);
+    --color-back-dark-a: hsla(var(--color-base-hue), 11%, 15%, 0.3); 
+    --color-back-light: hsl(var(--color-base-hue), 31%, 28%);
+    --color-text-light: hsl(var(--color-base-hue), 100%, 90%);
+    --title-font-size:3rem; 
+    --color-danger-hue: calc(var(--color-base-hue) - 180);
+    
+}

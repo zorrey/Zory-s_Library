@@ -8,21 +8,22 @@
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"  rel="stylesheet" />
     <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
-    <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
- 
-    
+    <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>   
     <script defer src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
     <script defer src="/javascripts/fileUpload.js"  ></script>
+    <link rel="stylesheet" href="/stylesheets/main.css">
     <title>Zory's Library</title>
 </head>
-<body>
+<body >
+    <div class="container" >        
+        <%- include('../blocks/header.ejs') %>
+        <div class="inner-container">
+            <%- include('../blocks/errorMessage.ejs') %>
+            <%- include('../blocks/message.ejs') %>
+            <%- body %>
+        </div>
     
-    <br>
-    <%- include('../blocks/header.ejs') %>
-    <%- include('../blocks/errorMessage.ejs') %>
-    <%- include('../blocks/message.ejs') %>
-    <%- body %>
-    <br>
-    
+        <br>  
+    </div>   
 </body>
 </html>
