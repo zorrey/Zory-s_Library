@@ -21,7 +21,7 @@
     <div class="form-item">
         <label for="publishDate"> Date Published </label>
         <input type="date" name="publishDate" 
-            value="<%= book.publishDate == null ? "": book.publishDate.toISOString().split('T')[0] %>">
+            value="<%= !book.publishDate ? "": book.publishDate.toISOString().split('T')[0] %>">
     </div>
     <div class="form-item">
         <label for="pageCount"> Page Count</label>
@@ -29,19 +29,23 @@
     </div>  
 </div>
 <div class="form-row">
-    <div class="form-item no-grow">
+    <div class="no-grow">
         <label for="cover"> Cover </label> <br>
-        <% if(book.coverImage != null && book.coverImage != undefined ) { %>
-        <img height="150" width="100" src="<%= book.coverPath %>" alt="book cover">
-        <% } %>
-        <input type="file" name="cover"  class="filepond"> 
+        <div class="form-row">
+            <div class="book-card">
+                <% if(book.coverImage != null && book.coverImage != undefined ) { %>
+                <img class="book-cover" src="<%= book.coverPath %>" alt="book cover">
+                <span class="book-title"> <%= book.title %> </span>   
+                <span class="book-title preview">Preview</span> <br>
+                <% } %>
+            </div>    
+            
+         <input type="file" name="cover"  class="book-cover filepond">     
+        </div>      
     </div>
     <div class="form-item">
         <label for="description"> Description </label>
         <textarea type="text" name="description" > <%= book.description %> </textarea>
     </div>
 </div>
-
-
-
 
