@@ -8,3 +8,120 @@
     <%- include('blocks/bookGrid.ejs' , 
     { books : books , large : true
     }) %>
+
+
+
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+ -->
+
+<script>
+    var w, h;
+    var links = document.getElementsByClassName("links")
+    var contents = document.getElementsByClassName("contents");
+    
+    function openlist(name){
+        for(let i=0; i<links.length; i++){
+            links[i].classList.remove("active")
+        }
+        for(let i=0; i<links.length; i++){
+            contents[i].classList.remove("active-list")
+        }
+         event.target.classList.add("active");
+         document.getElementById(name).classList.add("active-list");
+    }
+    /*-----------------change project page--------------------------------------------*/
+    function openPCard(cardNum, prev){
+
+       document.getElementById(prev).classList.add("turnOff"); 
+       setTimeout(()=>{ document.getElementById(prev).classList.remove("active-c", "turnOff")}, 500 ); 
+       setTimeout (()=>{document.getElementById(cardNum).classList.add("active-c")}, 500);                    
+    }
+    const menuButton = document.getElementById("ham");  
+    const footerButton = document.getElementById("ham-footer");  
+    const menuList = document.getElementById("menu-column"); 
+    const footerList = document.getElementById("footer-list");
+
+    function handleList(){
+        w = window.innerWidth;
+        h = window.innerHeight;
+        if(h<300){
+            footerList.style.right = "125px";
+            menuList.style.height = `${h-45}px`;    
+            menuList.classList.add('show');
+            footerList.classList.remove('show-footer');
+        }
+        if(h>=300 && w<700){
+            footerList.style.right = "0px"; 
+            menuList.style.height = `${h-45}px`;  
+            menuList.classList.add('show');
+            footerList.classList.remove('show-footer');
+        }
+    }
+    function toggleList(){ 
+        w = window.innerWidth;
+        h = window.innerHeight;
+        if(h<300){
+            footerList.style.right = "125px";
+            toggleFooterList;
+            menuList.style.height = `${h-45}px`;    
+            menuList.classList.toggle('show'); 
+        }
+        else{
+        console.log("w-h", w ,h) 
+        if(footerList.classList.contains('show-footer')){ 
+            menuList.style.height = `${h-140}px`;    
+            menuList.classList.toggle('show');      
+        }   else{
+            menuList.style.height = `${h-45}px`;    
+            menuList.classList.toggle('show'); 
+        }   }
+    }
+    function toggleFooterList(){
+
+        w = window.innerWidth;
+        h = window.innerHeight;
+
+        if(h<300){
+            footerList.style.right = "125px";
+            footerList.classList.toggle('show-footer'); ;
+
+        } 
+        else{
+            footerList.style.right = "0px"  ;
+        if(menuList.classList.contains('show') && !footerList.classList.contains("show-footer")){                
+            menuList.style.height = `${h - 140}px`; 
+            toggleList;          
+            footerList.classList.add('show-footer');      
+    }
+        else if(menuList.classList.contains('show') && footerList.classList.contains("show-footer")){
+            menuList.style.height = `${h -45}px`;  
+            menuList.classList.toggle('show');           
+            menuList.classList.toggle('show');           
+            document.getElementById("footer-list").classList.remove('show-footer'); 
+        } 
+        else document.getElementById("footer-list").classList.toggle('show-footer'); 
+             }
+    }
+    function checkWin(){
+         w = window.innerWidth;
+         h = window.innerHeight;
+        if(w>700){
+          menuList.classList.remove("show");
+          footerList.classList.remove("show-footer");
+        }
+        if(w<700){
+            toggleList;
+        }
+    }
+    menuButton.addEventListener('click' , toggleList);
+    footerButton.addEventListener('click' , toggleFooterList);   
+    window.addEventListener('resize', checkWin);
+    window.addEventListener('resize', handleList);
+    
+</script>   

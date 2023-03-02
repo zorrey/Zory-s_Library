@@ -19,7 +19,7 @@
 </div>
 <div class="form-row" >
     <div class="form-item">
-        <label for="publishDate"> Date Published </label>
+        <label for="publishDate"> Published </label>
         <input type="date" name="publishDate" 
             value="<%= !book.publishDate ? "": book.publishDate.toISOString().split('T')[0] %>">
     </div>
@@ -28,10 +28,10 @@
         <input type="number" name="pageCount" min="1" value="<%= book.pageCount %>"> 
     </div>  
 </div>
-<div class="form-row">
+<div class="form-row ">
     <div class="no-grow">
         <label for="cover"> Cover </label> <br>
-        <div class="form-row">
+        <div class="form-row-preview">
             <div class="book-card">
                 <% if(book.coverImage != null && book.coverImage != undefined ) { %>
                 <img class="book-cover" src="<%= book.coverPath %>" alt="book cover">

@@ -33,6 +33,8 @@
 }
 .book-card{   
     position: relative;   
+    margin: 0;
+    padding: 0;
 }
 .book-grid-large{
     --book-cover-width: var(--book-cover-width-large);

@@ -5,7 +5,8 @@
     --color-back-light: hsl(var(--color-base-hue), 50%, 95%);
     --color-text-light: hsl(var(--color-base-hue), 100%, 95%);
     --color-text-dark: hsl(var(--color-base-hue), 100%, 5%);
-    --title-font-size:3rem; 
+    --title-font-size:2rem; 
+    --title-font-size-sm:1.2rem; 
     --color-danger-hue: calc(var(--color-base-hue) - 180);
     --url: url("../pictureUpload/BG02")
 }

@@ -48,7 +48,7 @@ router.get('/new', async (req , res)=> {
 router.post('/',  async (req, res) => {
     const authors = await Author.find()
   
-   // const {title, pageCount, description, publishDate, cover} = req.body
+// const {title, pageCount, description, publishDate, cover} = req.body
 
     const book = new Book({
         title: req.body.title,
@@ -61,7 +61,7 @@ router.post('/',  async (req, res) => {
     try{
         const newBook = await book.save()
         res.redirect(`books/${newBook.id}`)
-      //  res.redirect('books')
+//  res.redirect('books')
             
     } catch(err) {
         console.log('new book error', err)
