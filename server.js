@@ -19,6 +19,7 @@ app.use(methodOverride('_method'))
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ limit: '10mb' , extended: false}) )
 /* setting up database connection */
+mongoose.set('strictQuery', true);
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
 const db = mongoose.connection
 db.on('error', error=> console.error(error))

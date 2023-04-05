@@ -2,11 +2,11 @@ const express = require('express')
 const router = express.Router()
 const  Book = require('../models/book')
 const path = require('path')
-const uploadPath = path.join('public', Book.coverImagePath)
+//const uploadPath = path.join('public', Book.coverImagePath)
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
 const  Author = require('../models/author')
 const { title } = require('process')
-
+const maxBookCount = 10;
 //all books
 router.get('/', async (req, res)=>{
     let bookQuery = Book.find().populate('author')
@@ -46,8 +46,12 @@ router.get('/new', async (req , res)=> {
 
 //Create Book Route
 router.post('/',  async (req, res) => {
-    const authors = await Author.find()
-  
+    const authors = await Author.find({})
+    const booksCount = await Book.countDocuments({}).exec()
+    console.log("books count", booksCount)
+    if(booksCount >= maxBookCount ){
+        return renderNewPage(res, new Book(), true, true)
+    }
 // const {title, pageCount, description, publishDate, cover} = req.body
 
     const book = new Book({
@@ -145,16 +149,16 @@ router.delete('/:id' , async (req, res) => {
 
 })
 
-async function renderNewPage (res, book, hasError = false){
-    renderFormPage (res, book, 'new', hasError)
+async function renderNewPage (res, book, hasError = false, isFull = false){
+    renderFormPage (res, book, 'new', hasError, isFull)
 
 }
 
-async function renderEditPage (res, book, hasError = false){
-    renderFormPage (res, book, 'edit', hasError)
+async function renderEditPage (res, book, hasError = false, isFull = false){
+    renderFormPage (res, book, 'edit', hasError, isFull)
 
 }
-async function renderFormPage (res, book, form, hasError = false){
+async function renderFormPage (res, book, form, hasError = false, isFull = false){
     try{
         const authors = await Author.find({})
         const params = {
@@ -164,7 +168,8 @@ async function renderFormPage (res, book, form, hasError = false){
         if(hasError) {
             if( form == 'edit') params.errorMessage = "Error Updating Book."
             if( form == 'new') {
-                if(!book.title) params.errorMessage = "Error Creating Book. Title required."
+                if(isFull){ params.errorMessage = `Error Creating Book. Max of ${maxBookCount} books count already reached.`}
+                else if(!book.title) params.errorMessage = "Error Creating Book. Title required."
                 else if(!book.pageCount){ params.errorMessage = "Error Creating Book. Page Count required." }
                 else if(!book.publishDate){ params.errorMessage = "Error Creating Book. Date Published required." }
                 else if(!book.coverImage){params.errorMessage = "Error Creating Book. Cover Image required."}

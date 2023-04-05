@@ -5,24 +5,22 @@
         <div class="book-card">
             <img class="book-cover" src="<%= book.coverPath %>" alt="book-cover">
             <span class="book-title"> <%= book.title %> </span>   
-        </div>
-        
-    
+        </div>   
         <div class="book-details-btn-grid">
-        <a class="btn btn-primary" href="/books/<%= book.id %>/edit">Edit</a>
+        <a class="btn btn-primary btn-grid" href="/books/<%= book.id %>/edit">Edit</a>
         <%- include('../blocks/deleteForm', 
                         { url: `/books/${book.id}` 
                     }) %>     
         <a class="btn btn-primary author-button" href="/authors/<%= book.author.id %>"> 
             View Author <!-- <%= book.author.name  %> -->
         </a>        
-    </div>        
+        </div>        
     </div>
     <div class="book-details-grid">
-        <div class="book-details-label" >Author: </div> <div><%= book.author.name %></div>
-        <div class="book-details-label" >publishDate:</div> <div> <%= book.publishDate.toDateString() %></div>
-        <div class="book-details-label" >pageCount: </div> <div><%= book.pageCount %></div>
-        <div class="book-details-label" >description: </div> <div><%= book.description %></div>
+        <div class="book-details-label" >Author: </div> <div class="detail" ><%= book.author.name %></div>
+        <div class="book-details-label" >Date:</div> <div class="detail" > <%= book.publishDate.toDateString() %></div> 
+        <div class="book-details-label" >Pages: </div> <div class="detail" ><%= book.pageCount %></div>
+        <div class="book-details-label" >Description: </div> <div class="detail" ><%= book.description %></div>
     </div>
    
 </div>

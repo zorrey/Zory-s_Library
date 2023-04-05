@@ -8,5 +8,4 @@
     --title-font-size:2rem; 
     --title-font-size-sm:1.2rem; 
     --color-danger-hue: calc(var(--color-base-hue) - 180);
-    --url: url("../pictureUpload/BG02")
 }

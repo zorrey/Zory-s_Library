@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
-const path = require('path')
+//const path = require('path')
 //const Author = require('../models/author')
-const coverImagePath = "uploads/bookCovers"
+//const coverImagePath = "uploads/bookCovers"
 
 const bookSchema = new mongoose.Schema({
     title: {
@@ -30,15 +30,15 @@ const bookSchema = new mongoose.Schema({
     }, */
     coverImage: {        
         type: Buffer,
-        required:true
+        required: true
     },
     coverImageType: {        
         type: String,
-        required:true
+        required: true
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
-        required:true,
+        required: true,
         ref: 'Author'
     }
 
@@ -56,4 +56,4 @@ bookSchema.virtual('coverPath').get(function(){
 })
 
 module.exports = mongoose.model('Book', bookSchema)
-module.exports.coverImagePath = coverImagePath
+//module.exports.coverImagePath = coverImagePath

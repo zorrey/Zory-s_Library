@@ -11,10 +11,15 @@ function ready(){
     const coverWidth = parseFloat(rootStyles.getPropertyValue('--book-cover-width-large'))
     const coverRatio = parseFloat(rootStyles.getPropertyValue('--book-cover-aspect-ratio'))
     const coverHeight = coverWidth / coverRatio
+    const maxSize = 50000
 
     FilePond.registerPlugin(FilePondPluginImagePreview,
         FilePondPluginImageResize,
-        FilePondPluginFileEncode,);
+        FilePondPluginFileEncode);
+    FilePond.registerPlugin(FilePondPluginFileValidateSize);    
+    FilePond.setOptions({
+    maxFileSize: maxSize,
+    })
     FilePond.setOptions({
     stylePanelAspectRatio: 1/coverRatio,
     imageResizeTargetWidth: coverWidth,
